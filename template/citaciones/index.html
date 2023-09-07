@@ -1,0 +1,46 @@
+{% extends "plantillas/base.html" %}
+{% block content %}
+<div class="p-4 mx-auto">
+    <h5>Current Date: {{ current_datetime.date }} {{ current_datetime.time }}</h5>
+</div>
+<!-- Sale & Revenue Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        
+            {% for citacion in citaciones %}
+        
+            
+            <div class="col-sm-12 col-md-12 col-xl-4">
+                <div class="card mx-auto" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title text-center">{{ citacion.obj.nombre }}</h5>
+                    <p class="card-text">{{ citacion.obj.descripcion }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Fecha: {{ citacion.obj.fecha.date }} </li>
+                    <li class="list-group-item">Hora: {{ citacion.obj.fecha.time }} </li>
+                    <li class="list-group-item">Lugar: {{ citacion.obj.lugar }}</li>
+                    <li class="list-group-item">Tenida: {{ citacion.obj.tenida }}</li>
+                    </ul>
+                    <div class="card-body">
+                    {% if citacion.flag %}
+                        <a href="#" class="card-link">Dejar Licencia</a>
+                    {% else %}
+                        <a href="#" style="pointer-events: none;" class="card-link text-danger">No cumple plazo 24 horas</a>
+                    {% endif %}
+                    <!-- <a href="#" class="card-link">Another link</a> -->
+                    </div>
+                </div>
+            </div>
+            
+            {% endfor %}
+        
+    </div>
+</div>
+<!-- Sale & Revenue End -->
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    
+
+{% endblock %}
