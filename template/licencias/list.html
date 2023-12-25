@@ -1,0 +1,42 @@
+{% extends "plantillas/base.html" %}
+{% block content %}
+<div class="p-4 mx-auto">
+    <h5>Current Date: {{ current_datetime.date }} {{ current_datetime.time }}</h5>
+    <h3>Mis Licencias</h3>
+</div>
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Citación</th>
+                        <th scope="col">Fecha Licencia</th>
+                        <th scope="col">Fecha Citación</th>
+                        <th></th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for obj in licencias %}
+                        <tr>
+                            <th scope="row">{{ obj.licencia.id }}</th>
+                            <td>{{ obj.citacion.nombre }}</td>
+                            <td>{{ obj.licencia.fecha_licencia|date:"M d, Y" }}</td>
+                            <td>{{ obj.citacion.fecha|date:"M d, Y" }}</td>
+                            <td><a href="">Ver detalle</a></td>
+                        </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Sale & Revenue End -->
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    
+
+{% endblock %}

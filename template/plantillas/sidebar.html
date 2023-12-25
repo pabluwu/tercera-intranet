@@ -12,11 +12,32 @@
                 </div>
                 <div class="ms-3">
                     <h6 class="mb-0">{{ user.get_full_name  }}</h6>
-                    <span>Admin</span>
+                    <span>Bombero</span>
                 </div>
             </div>
             <div class="navbar-nav w-100">
-                <a href="{% url 'citaciones_list' %}" class="nav-item nav-link active"><i class="fas fa-calendar-week"></i>Citaciones</a>
+                <div class="nav-item dropdown">
+                    <a href="{% url 'citaciones_list' %}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-calendar-week"></i>Citaciones</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        <a href="{% url 'citaciones_list' %}" class="dropdown-item">Ver Citaciones</a>
+                        {% if perms.intranet.add_citacion %}
+                            <a href="{% url 'citaciones_post' %}" class="dropdown-item">Crear Citación</a>
+                        {% endif %}
+                        <a href="element.html" class="dropdown-item">Other Elements</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="{% url 'citaciones_list' %}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-signature"></i>Licencias</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        <a href="{% url 'licencia_list' %}" class="dropdown-item">Ver Mis Licencias</a>
+                        <a href="{% url 'licencia_revisar' %}" class="dropdown-item">Revisar Licencias</a>
+                        {% if perms.intranet.add_citacion %}
+                            <a href="{% url 'citaciones_post' %}" class="dropdown-item">Crear Citación</a>
+                        {% endif %}
+                        <a href="element.html" class="dropdown-item">Other Elements</a>
+                    </div>
+                </div>
+                
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
                     <div class="dropdown-menu bg-transparent border-0">

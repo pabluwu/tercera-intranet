@@ -3,10 +3,13 @@ from django.shortcuts import render
 from intranet.models import Citacion
 from django.http import Http404
 from datetime import datetime, timedelta
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
+
+from intranet.forms import CitacionForm
 
 @login_required
-def citaciones_list(request):
+@permission_required('intranet.add_citacion')
+def citaciones_post(request):
     current_date = datetime.now().date()
     current_datetime = datetime.now()
     try:
@@ -24,7 +27,8 @@ def citaciones_list(request):
         print(objs)
     except Citacion.DoesNotExist:
         raise Http404("Poll does not exist")
-    return render(request, './citaciones/index.html', {"citaciones": objs, "current_datetime": current_datetime})
+    context = {"form": CitacionForm(), "current_datetime": current_datetime}
+    return render(request, './citaciones/post.html', context)
     
     
     
