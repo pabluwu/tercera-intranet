@@ -25,5 +25,10 @@ class Licencia(models.Model):
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     fecha_licencia = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        permissions = [
+            ("check_licencias", "Puede revisar todas las licencias"),
+        ]
+
     def __str__(self):
         return self.motivo

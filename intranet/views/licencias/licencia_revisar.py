@@ -3,9 +3,10 @@ from django.shortcuts import render
 from intranet.models import Licencia, Citacion
 from django.http import Http404
 from datetime import datetime, timedelta
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 @login_required
+@permission_required('intranet.check_licencias')
 def licencia_revisar(request):
     current_date = datetime.now().date()
     current_datetime = datetime.now()

@@ -7,17 +7,25 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def licencia_list(request):
+
     current_date = datetime.now().date()
     current_datetime = datetime.now()
 
     licencias = Licencia.objects.filter(autor_id=request.user.id)
     obj = []
+    context = {"licencias": obj, "current_datetime": current_datetime}
     for l in licencias:
-        print(l.id)
-        c = Citacion.objects.get(id=l.citacion_id)
-        obj.append({'licencia':l,'citacion':c})
+        print(current_datetime)
+        try:
+            c = Citacion.objects.get(id=l.citacion_id, fecha__gt=current_datetime)
+            obj.append({'licencia':l,'citacion':c})
+            context['empty'] = False
+        except Citacion.DoesNotExist:
+            context['empty'] = True
 
-    return render(request, './licencias/list.html', {"licencias": obj, "current_datetime": current_datetime})
+    
+
+    return render(request, './licencias/list.html', context)
     
     
     

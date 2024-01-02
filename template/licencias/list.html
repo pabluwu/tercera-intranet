@@ -3,6 +3,7 @@
 <div class="p-4 mx-auto">
     <h5>Current Date: {{ current_datetime.date }} {{ current_datetime.time }}</h5>
     <h3>Mis Licencias</h3>
+    <h6>Si desea revisar licencias pasadas ingrese aquí</h6>
 </div>
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
@@ -19,15 +20,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                        {% for obj in licencias %}
-                        <tr>
-                            <th scope="row">{{ obj.licencia.id }}</th>
-                            <td>{{ obj.citacion.nombre }}</td>
-                            <td>{{ obj.licencia.fecha_licencia|date:"M d, Y" }}</td>
-                            <td>{{ obj.citacion.fecha|date:"M d, Y" }}</td>
-                            <td><a href="">Ver detalle</a></td>
-                        </tr>
-                        {% endfor %}
+                        {% if empty %}
+                            <div class="badge bg-danger text-wrap" style="width: 10rem;">
+                                Usted no tiene licencias activas.
+                            </div>
+                        {% else %}
+
+                            {% for obj in licencias %}
+                            <tr>
+                                <th scope="row">{{ obj.licencia.id }}</th>
+                                <td>{{ obj.citacion.nombre }}</td>
+                                <td>{{ obj.licencia.fecha_licencia|date:"M d, Y" }}</td>
+                                <td>{{ obj.citacion.fecha|date:"M d, Y" }}</td>
+                                <td><a href="">Ver detalle</a></td>
+                            </tr>
+                            {% endfor %}
+                        
+                        {% endif %}
                 </tbody>
             </table>
         </div>
