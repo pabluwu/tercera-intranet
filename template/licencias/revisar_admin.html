@@ -23,7 +23,7 @@
                             <th scope="row">{{ obj.id }}</th>
                             <td>{{ obj.nombre }}</td>
                             <td>{{ obj.fecha|date:"M d, Y" }}</td>
-                            <td><a href="">Ver licencias</a></td>
+                            <td><a href="{% url 'licencia_citacion' id_citacion=obj.id %}">Ver licencias</a></td>
                         </tr>
                         {% endfor %}
                 </tbody>

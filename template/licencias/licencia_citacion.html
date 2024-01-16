@@ -2,7 +2,7 @@
 {% block content %}
 <div class="p-4 mx-auto">
     <h5>Current Date: {{ current_datetime.date }} {{ current_datetime.time }}</h5>
-    <h3>Licencias de Citación: </h3>
+    <h3>Licencias de Citación: {{ citacion.nombre }}</h3>
 </div>
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
@@ -11,8 +11,8 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Citación</th>
-                        <th scope="col">Fecha Citación</th>
+                        <th scope="col">Bombero</th>
+                        <th scope="col">Fecha Licencia</th>
                         <th></th>
                         
                     </tr>
