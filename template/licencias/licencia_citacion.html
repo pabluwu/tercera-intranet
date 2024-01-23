@@ -18,12 +18,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                        {% for obj in citaciones %}
+                        {% for obj in licencias %}
                         <tr>
                             <th scope="row">{{ obj.id }}</th>
-                            <td>{{ obj.nombre }}</td>
-                            <td>{{ obj.fecha|date:"M d, Y" }}</td>
-                            <td><a href="{% url 'licencia_revisar' %}">Ver licencias</a></td>
+                            <td>{{ obj.autor }}</td>
+                            <td>{{ obj.fecha_licencia|date:"M d, Y" }}</td>
+                            <td><a href="{% url 'licencia_get' id=obj.id %}">Ver detalle</a></td>
                         </tr>
                         {% endfor %}
                 </tbody>

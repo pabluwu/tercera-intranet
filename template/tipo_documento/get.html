@@ -1,0 +1,22 @@
+{% extends "plantillas/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="col-sm-12 col-xl-6 mx-auto">
+        <div class="bg-light rounded h-100 p-4">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+{% endblock %}

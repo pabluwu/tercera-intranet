@@ -3,6 +3,7 @@
 {% block content %}
 
 <div class="container-fluid pt-4 px-4">
+    {% if request.user == licencia.autor or perms.intranet.check_licencias %}
     <div class="col-sm-12 col-xl-6 mx-auto">
         <div class="bg-light rounded h-100 p-4">
             <div class="card">
@@ -11,6 +12,7 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Citacion: {{ citacion.nombre }}</h5>
+                    <p class="card-text">Autor: {{ licencia.autor }}</p>
                     <p class="card-text">{{ licencia.motivo }}</p>
                 </div>
                 <ul class="list-group list-group-flush">
@@ -21,28 +23,11 @@
                     <a href="javascript:history.back()" class="btn btn-primary">Volver Atrás</a>
                 </div>
             </div>
-            <!-- <h6>Citacion: {{ citacion.nombre }}</h6> -->
-            <!-- <h6 class="mb-4">Solicitud de Licencia</h6>
-            {% if flag and not licencia%}
-                <form  method="POST">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <button type="submit" class="btn btn-primary mt-3">Enviar</button>
-                </form>
-            {% elif licencia %}
-                <p>Ya has envíado una licencia para esta citación con el siguiente motivo: {{ licencia.motivo }}.</p>
-                <p>Para solicitar una licencia extraordinaria envía un correo a explicando tu situación: </p>
-                <a href="mailto:licencias.terceraquillota@gmail.com" target="_blank">licencias.terceraquillota@gmail.com</a>
-            {% else %}            
-                <p>No puedes dejar una licencia con un plazo menor a 24 horas.</p>
-                <p>Para solicitar una licencia extraordinaria envía un correo a explicando tu situación: </p>
-                <a href="mailto:licencias.terceraquillota@gmail.com" target="_blank">licencias.terceraquillota@gmail.com</a>
-            {% endif %} -->
         </div>
     </div>
+    {% endif %}
 </div>
 
-<!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 

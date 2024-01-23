@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.admin import User
+from .validators import *
 
 
 # Create your models here.
@@ -32,3 +33,22 @@ class Licencia(models.Model):
 
     def __str__(self):
         return self.motivo
+    
+class TipoDocumento(models.Model):
+    tipo = models.CharField(max_length=100, unique=True)
+    slug = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.tipo
+
+class Documento(models.Model):
+    nombre = models.CharField(max_length=100)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
+    descripcion = models.TextField(max_length=300)
+    archivo = models.FileField(upload_to='docs/', validators=[file_size, validate_file_extension])
+    nombre_original = models.CharField(max_length=500)
+    fecha_documento = models.DateTimeField(auto_now_add=True)
+    tipo_documento = models.ForeignKey(TipoDocumento, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nombre

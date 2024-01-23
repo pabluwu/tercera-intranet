@@ -1,0 +1,77 @@
+{% extends "plantillas/base.html" %}
+
+{% block content %}
+{% load template_filter %}
+<div class="p-4 mx-auto">
+    <h3>{{ tipo.tipo }}</h3>
+</div>
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Oficio</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col"></th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if empty %}
+                    <div class="badge bg-danger text-wrap" style="width: 10rem;">
+                        Aún no se han cargado archivos.
+                    </div>
+                    {% else %}
+
+                    {% for obj in documentos %}
+                    <tr>
+                        <th scope="row">{{ obj.id }}</th>
+                        <td>{{ obj.nombre_original }}</td>
+                        <td>{{ obj.fecha_documento|date:"M d, Y" }}</td>
+                        <td><a href="{% url 'get_documento' file_name=obj.archivo|replace_doc %}"
+                                class="btn btn-primary btn-sm">Ver Archivo</a></td>
+                        {% if perms.intranet.check_licencias %}
+                        <td><a href="#" onclick="eliminarDocumento({{ obj.id }})"
+                                class="btn btn-danger btn-sm">Eliminar</a></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Sale & Revenue End -->
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+{% block js %}
+
+<script>
+
+    function eliminarDocumento(id) {
+        Swal.fire({
+            "title": "Está seguro que desea eliminar este documento?",
+            "text": "Esta acción no se puede deshacer",
+            "icon": "question",
+            "showCancelButton": true,
+            "confirmButtonColor": "darkred"
+        })
+            .then(function (result) {
+                if (result.isConfirmed) {
+                    window.location.href = `/tercera/documentos/delete/${id}`
+                }
+            })
+    }
+
+</script>
+
+{% endblock %}
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "plantillas/base.html" %}
+{% block content %}
+<div class="p-4 mx-auto">
+    <h3>Tipos Documentos</h3>
+    <a href="{% url 'post_tipos_documentos' %}" class="btn btn-primary">Crear nuevo</a>
+</div>
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tipo</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for obj in tipo_documento %}
+                    <tr>
+                        <th scope="row">{{ obj.id }}</th>
+                        <td>{{ obj.tipo }}</td>
+                        <td><a href="{% url 'get_tipos_documentos' id=obj.id %}" class="btn btn-primary btn-sm">Ver detalle</a></td>
+                        <td><a href="#" onclick="eliminarDocumento({{ obj.id }})" class="btn btn-danger btn-sm">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Sale & Revenue End -->
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+{% block js %}
+
+<script>
+
+    function eliminarDocumento(id){
+        Swal.fire({
+            "title":"Está seguro que desea eliminar este documento?",
+            "text": "Esta acción no se puede deshacer",
+            "icon": "question",
+            "showCancelButton":true,
+            "confirmButtonColor": "darkred"
+        })
+        .then(function(result){
+            if(result.isConfirmed){
+                window.location.href=`/tercera/documentos/tipo/delete/${id}`
+            }
+        })
+    }
+
+</script>
+
+{% endblock %}
+
+{% endblock %}

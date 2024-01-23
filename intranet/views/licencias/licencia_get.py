@@ -9,6 +9,8 @@ def get_licencia(request, id):
     
     licencia = get_object_or_404(Licencia, id=id)
     citacion = get_object_or_404(Citacion, id = licencia.citacion_id)
+    
+    print(licencia)
 
     context = { 'licencia' : licencia, 'citacion' : citacion }
 
