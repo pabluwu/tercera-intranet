@@ -11,3 +11,4 @@ from .tipo_documento.get import all_tipo_documento
 from .tipo_documento.post import post_tipo_documento, delete_tipo_documento
 from .documento.post import post_documento, delete_documento
 from .documento.get import get_documento, list_documento
+from .cuota.get import list_cuota

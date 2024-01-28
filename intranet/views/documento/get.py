@@ -10,10 +10,11 @@ from intranet.forms import DocumentoForm
 @login_required
 def get_documento(request, file_name):
     # documento = get_object_or_404(Documento, pk=id)
-    documento = Documento.objects.get(archivo='docs/'+file_name)
+    documento = Documento.objects.get(nombre_original=file_name)
 
-    print(documento.archivo)
-    filepath = os.path.join('', str(documento.archivo))
+    print(documento.archivo.name)
+    # filepath = os.path.join('uploads/', str(documento.archivo.name))
+    filepath = documento.archivo.path
     return FileResponse(open(filepath, 'rb'), content_type='application/pdf')
 
 @login_required

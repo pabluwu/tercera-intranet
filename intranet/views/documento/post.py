@@ -17,7 +17,8 @@ def post_documento(request):
         if form.is_valid():
             obj = form.save(commit=False)
             txt = request.FILES['archivo'].name
-            obj.nombre_original = txt
+            obj.nombre_original = str(txt)
+            print(obj.archivo)
             obj.save()
             messages.success(request, "Documento subido correctamente")
             context['form'] = form

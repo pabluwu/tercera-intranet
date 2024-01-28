@@ -29,6 +29,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_HOST = 'mail.bombalandeta.cl'
+EMAIL_HOST_USER = 'contacto@bombalandeta.cl'
+EMAIL_HOST_PASSWORD = 'QRx7ne+4[LHT'
+EMAIL_PORT = '465'
+EMAIL_USE_SSL = True
+
 
 # Application definition
 
@@ -131,7 +137,10 @@ STATIC_FILES = [
     os.path.join(BASE_DIR,'tercera/static'),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR,'assets')
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_URL = 'files/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

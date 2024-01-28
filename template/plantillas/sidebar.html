@@ -7,7 +7,7 @@
             </a>
             <div class="d-flex align-items-center ms-4 mb-4">
                 <div class="position-relative">
-                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                    <img class="rounded-circle" src="{{ request.user.bombero.imagen.url }}" alt="" style="width: 40px; height: 40px;">
                     <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                 </div>
                 <div class="ms-3">
@@ -43,21 +43,19 @@
                     <a href="{% url 'post_documento' %}" class="nav-item nav-link"><i class="fas fa-file-archive"></i>Subir Documentos</a>
                 {% endif %}
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-file-word"></i>Oficios</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-file-word"></i>Documentos</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         {% for tipo in tipos_documento %}
-                            <a href="{% url 'list_documento' %}?type={{tipo.slug}}" class="dropdown-item">{{tipo}}</a>
+                            <a href="{% url 'list_documento' %}?type={{tipo.slug}}" class="dropdown-item text-wrap">{{tipo}}</a>
                         {% endfor %}
                     </div>
                 </div>
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-fire"></i>Ordenes del día</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-file-word"></i>Cuotas</a>
                     <div class="dropdown-menu bg-transparent border-0">
-                        <a href="button.html" class="dropdown-item">Comandancia</a>
-                        <a href="typography.html" class="dropdown-item">Capitanía</a>
+                        <a href="#" class="dropdown-item text-wrap">Mis cuotas</a>
                     </div>
                 </div>
-                <a href="#" class="nav-item nav-link"><i class="fas fa-file-archive"></i>Reglamentos</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
                     <div class="dropdown-menu bg-transparent border-0">

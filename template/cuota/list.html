@@ -2,20 +2,22 @@
 
 {% block content %}
 {% load template_filter %}
-<div class="p-4 mx-auto">
-    <h3>{{ tipo.tipo }}</h3>
+<div class="pt-4 pb-2 px-4 mx-auto">
+    <h3>Mis Cuotas</h3>
 </div>
-<div class="container-fluid pt-4 px-4">
-    <div class="row g-4">
+<div class="container-fluid px-4">
+    <p>Filtro por años</p>
+    <a class="btn btn-success">2023</a>
+    <a class="btn btn-success">2024</a>
+    <div class="row g-4 mt-3">
         <div class="container">
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Oficio</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col"></th>
-                        <th></th>
+                        <th scope="col">Mes</th>
+                        <th scope="col">Fecha Pago</th>
+                        <th scope="col">Nº Comprobante</th>
+                        <th>Ver Detalle</th>
 
                     </tr>
                 </thead>
@@ -26,16 +28,20 @@
                     </div>
                     {% else %}
 
-                    {% for obj in documentos %}
+                    {% for key, value in cuotas.items %}
                     <tr>
-                        <th scope="row">{{ obj.id }}</th>
-                        <td>{{ obj.nombre_original }}</td>
-                        <td>{{ obj.fecha_documento|date:"M d, Y" }}</td>
-                        <td><a href="{{obj.archivo.url}}"
-                                class="btn btn-primary btn-sm">Ver Archivo</a></td>
+                        <th scope="row">{{ key }}</th>
+                        {% if value == 'empty'%}
+                        <td>Por Pagar</td>
+                        <td></td>
+                        <td></td>
+                        {% else %}
+                        <td>{{ value.fecha_ingreso }}</td>
+                        <td>{{ value.numero_comprobante }}</td>
                         {% if perms.intranet.check_licencias %}
-                        <td><a href="#" onclick="eliminarDocumento({{ obj.id }})"
-                                class="btn btn-danger btn-sm">Eliminar</a></td>
+                        <td><a href="#" onclick="eliminarDocumento({{ obj.id }})" class="btn btn-success btn-sm">Ver
+                                Detalle</a></td>
+                        {% endif %}
                         {% endif %}
                     </tr>
                     {% endfor %}
