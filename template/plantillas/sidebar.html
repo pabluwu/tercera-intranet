@@ -53,8 +53,9 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-file-word"></i>Cuotas</a>
                     <div class="dropdown-menu bg-transparent border-0">
-                        <a href="#" class="dropdown-item text-wrap">Mis cuotas</a>
-                    </div>
+                        <a href="{% url 'list_cuota'%}" class="dropdown-item text-wrap">Mis cuotas</a>
+                        <a href="{% url 'list_cuota'%}" class="dropdown-item text-wrap">Ingresar cuotas</a>
+                    </div>            
                 </div>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>

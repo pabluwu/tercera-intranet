@@ -1,0 +1,52 @@
+{% extends "plantillas/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load template_filter %}
+<div class="pt-4 pb-2 px-4 mx-auto">
+    <h3>Ingreso de Cuotas</h3>
+</div>
+<div class="container-fluid px-4">
+    <div class="col-sm-12 col-xl-6 mx-auto">
+        <div class="bg-light rounded h-100 p-4">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- Sale & Revenue End -->
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+{% block js %}
+
+<script>
+
+    jQuery('#id_user').select2({
+        selectionCssClass: "select form-select",
+        theme: 'bootstrap-5'
+    });
+    function eliminarDocumento(id) {
+        Swal.fire({
+            "title": "Está seguro que desea eliminar este documento?",
+            "text": "Esta acción no se puede deshacer",
+            "icon": "question",
+            "showCancelButton": true,
+            "confirmButtonColor": "darkred"
+        })
+            .then(function (result) {
+                if (result.isConfirmed) {
+                    window.location.href = `/tercera/documentos/delete/${id}`
+                }
+            })
+    }
+
+</script>
+
+{% endblock %}
+
+{% endblock %}
