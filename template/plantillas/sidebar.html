@@ -7,7 +7,7 @@
             </a>
             <div class="d-flex align-items-center ms-4 mb-4">
                 <div class="position-relative">
-                    <img class="rounded-circle" src="{{ request.user.bombero.imagen.url }}" alt="" style="width: 40px; height: 40px;">
+                    <img class="rounded-circle" src="{{ request.user.bombero.imagen.url }}" alt="" style="width: 40px; height: 40px; object-fit: cover;">
                     <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                 </div>
                 <div class="ms-3">
@@ -54,7 +54,7 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-file-word"></i>Cuotas</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         <a href="{% url 'list_cuota'%}" class="dropdown-item text-wrap">Mis cuotas</a>
-                        <a href="{% url 'list_cuota'%}" class="dropdown-item text-wrap">Ingresar cuotas</a>
+                        <a href="{% url 'post_cuota'%}" class="dropdown-item text-wrap">Ingresar cuotas</a>
                     </div>            
                 </div>
                 <div class="nav-item dropdown">

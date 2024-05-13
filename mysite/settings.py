@@ -90,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'tercera_cia',
         'USER': 'root',
-        'PASSWORD': 'sup3rl1m',
+        'PASSWORD': '',
         # 'USER': 'db_tercera',
         # 'PASSWORD': 'KZWLyQWLYxsaTSV',
         'HOST':'localhost',

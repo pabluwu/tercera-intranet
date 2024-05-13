@@ -3,7 +3,7 @@ from intranet.models import TipoDocumento
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
-from django.shortcuts import redirect, reverse
+from django.shortcuts import redirect
 from slugify import slugify
 
 from intranet.forms import TipoDocumentoForm
