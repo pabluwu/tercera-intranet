@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-bqxne3$a5o*50vruf@3%8a1q!vos)ufmt6nfwxb@y%6h^e(1(e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['bombalandeta.cl', 'http://www.bombalandeta.cl', 'https://www.bombalandeta.cl', 'https://bombalandeta.cl',]
 
 EMAIL_HOST = 'mail.bombalandeta.cl'
 EMAIL_HOST_USER = 'contacto@bombalandeta.cl'
