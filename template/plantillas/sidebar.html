@@ -2,7 +2,7 @@
     <!-- Sidebar Start -->
     <div class="sidebar pe-4 pb-3">
         <nav class="navbar bg-light navbar-light">
-            <a href="index.html" class="navbar-brand mx-4 mb-3">
+            <a href="{% url 'citaciones_list' %}" class="navbar-brand mx-4 mb-3">
                 <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>BombaLandeta</h3>
             </a>
             <div class="d-flex align-items-center ms-4 mb-4">
@@ -50,14 +50,17 @@
                         {% endfor %}
                     </div>
                 </div>
+                
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-file-word"></i>Cuotas</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         <a href="{% url 'list_cuota'%}" class="dropdown-item text-wrap">Mis cuotas</a>
-                        <a href="{% url 'post_cuota'%}" class="dropdown-item text-wrap">Ingresar cuotas</a>
+                        {% if perms.intranet.add_cuota %}
+                            <a href="{% url 'post_cuota'%}" class="dropdown-item text-wrap">Ingresar cuotas</a>
+                        {% endif %}
                     </div>            
                 </div>
-                <div class="nav-item dropdown">
+                <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         <a href="button.html" class="dropdown-item">Buttons</a>
@@ -65,7 +68,7 @@
                         <a href="element.html" class="dropdown-item">Other Elements</a>
                     </div>
                 </div>
-                <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
+                <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a> -->
             </div>
         </nav>
     </div>
