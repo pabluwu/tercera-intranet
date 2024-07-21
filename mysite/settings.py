@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-bqxne3$a5o*50vruf@3%8a1q!vos)ufmt6nfwxb@y%6h^e(1(e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['167.114.98.159','localhost', '127.0.0.1']
 
 EMAIL_HOST = 'mail.bombalandeta.cl'
 EMAIL_HOST_USER = 'contacto@bombalandeta.cl'
@@ -89,10 +89,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'tercera_cia',
-        'USER': 'root',
-        'PASSWORD': '',
-        # 'USER': 'db_tercera',
-        # 'PASSWORD': 'KZWLyQWLYxsaTSV',
+        # 'USER': 'root',
+        # 'PASSWORD': '',
+        'USER': 'db_tercera',
+        'PASSWORD': 'KZWLyQWLYxsaTSV',
         'HOST':'localhost',
         'PORT':'3306',
     }
