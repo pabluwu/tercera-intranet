@@ -4,6 +4,7 @@ from .views import post_licencia, licencia_list, licencia_revisar, licencia_cita
 from .views import get_tipo_documento, all_tipo_documento, post_tipo_documento, delete_tipo_documento
 from .views import post_documento, get_documento, list_documento, delete_documento
 from .views import list_cuota, post_cuota
+from .views import editar_perfil
 
 urlpatterns = [
     path("citaciones", citaciones_list, name="citaciones_list"),
@@ -28,5 +29,7 @@ urlpatterns = [
     
     path('cuotas/mis_cuotas', list_cuota, name='list_cuota'),
     path('cuotas/', post_cuota, name='post_cuota'),
+    
+    path('perfil/', editar_perfil, name='editar_perfil'),
     
 ]

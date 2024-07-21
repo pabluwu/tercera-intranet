@@ -13,3 +13,4 @@ from .documento.post import post_documento, delete_documento
 from .documento.get import get_documento, list_documento
 from .cuota.get import list_cuota
 from .cuota.post import post_cuota
+from .usuario.editar_perfil import editar_perfil
