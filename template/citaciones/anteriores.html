@@ -2,9 +2,14 @@
 {% block content %}
 <div class="p-4 mx-auto">
     <h5>Fecha: {{ current_datetime.date }} {{ current_datetime.time }}</h5>
-    <h3>Revisar Licencias</h3>
+    <h3>Citaciones de compañía</h3>
+    <!-- <h6>Si desea revisar licencias pasadas ingrese aquí</h6> -->
 </div>
 <div class="container-fluid pt-4 px-4">
+    <p>Filtro por años</p>
+    <a href="{% url 'citaciones_anteriores' %}?year=any" class="btn btn-success" onclick="">Historico</a>
+    <a href="{% url 'citaciones_anteriores' %}?year=2023" class="btn btn-success">2023</a>
+    <a href="{% url 'citaciones_anteriores' %}?year=2024" class="btn btn-success">2024</a>
     <div class="row g-4">
         <div class="container">
             <table class="table">
@@ -13,19 +18,20 @@
                         <th scope="col">#</th>
                         <th scope="col">Citación</th>
                         <th scope="col">Fecha Citación</th>
+                        <th scope="col"></th>
                         <th></th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
-                        {% for obj in citaciones %}
-                        <tr>
-                            <th scope="row">{{ obj.id }}</th>
-                            <td>{{ obj.nombre }}</td>
-                            <td>{{ obj.fecha|date:"M d, Y" }}</td>
-                            <td><a href="{% url 'licencia_citacion' id_citacion=obj.id %}">Ver licencias</a></td>
-                        </tr>
-                        {% endfor %}
+                    {% for obj in citaciones %}
+                    <tr>
+                        <th scope="row">{{ obj.id }}</th>
+                        <td>{{ obj.nombre }}</td>
+                        <td>{{ obj.fecha|date:"M d, Y" }}</td>
+                        <td><a href="">Ver detalle</a></td>
+                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -35,6 +41,6 @@
 
 <!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    
+
 
 {% endblock %}

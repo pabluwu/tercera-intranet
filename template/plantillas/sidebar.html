@@ -12,7 +12,7 @@
                 </div>
                 <div class="ms-3">
                     <h6 class="mb-0">{{ user.get_full_name  }}</h6>
-                    <span>Bombero</span>
+                    <span>{{request.user.groups.all.0.name}}</span>
                 </div>
             </div>
             <div class="navbar-nav w-100">
@@ -22,6 +22,7 @@
                         <a href="{% url 'citaciones_list' %}" class="dropdown-item">Ver Citaciones</a>
                         {% if perms.intranet.add_citacion %}
                             <a href="{% url 'citaciones_post' %}" class="dropdown-item">Crear Citación</a>
+                            <a href="{% url 'citaciones_anteriores' %}?year=any" class="dropdown-item">Citaciones Anteriores</a>
                         {% endif %}
                         
                     </div>

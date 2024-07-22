@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import citaciones_list, citaciones_post
+from .views import citaciones_list, citaciones_post, citaciones_anteriores
 from .views import post_licencia, licencia_list, licencia_revisar, licencia_citacion, licencia_list_historico, get_licencia
 from .views import get_tipo_documento, all_tipo_documento, post_tipo_documento, delete_tipo_documento
 from .views import post_documento, get_documento, list_documento, delete_documento
@@ -9,6 +9,7 @@ from .views import editar_perfil
 urlpatterns = [
     path("citaciones", citaciones_list, name="citaciones_list"),
     path("citaciones/crear", citaciones_post, name="citaciones_post"),
+    path("citaciones/anteriores", citaciones_anteriores, name="citaciones_anteriores"),
 
     path('licencia/<int:id>', post_licencia, name='post_licencia'),
     path('licencias/', licencia_list, name='licencia_list'),

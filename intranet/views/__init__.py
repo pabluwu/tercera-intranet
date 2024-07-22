@@ -1,5 +1,6 @@
 from .citaciones.citaciones_list import citaciones_list
 from .citaciones.citaciones_post import citaciones_post
+from .citaciones.citaciones_anteriores import citaciones_anteriores
 from .licencias.licencia_post import post_licencia
 from .licencias.licencia_list import licencia_list
 from .licencias.licencia_revisar import licencia_revisar
