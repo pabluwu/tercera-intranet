@@ -18,7 +18,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Citación</th>
                         <th scope="col">Fecha Citación</th>
-                        <th scope="col"></th>
+                        <th scope="col">Cantidad de Licencias</th>
                         <th></th>
 
                     </tr>
@@ -26,10 +26,11 @@
                 <tbody>
                     {% for obj in citaciones %}
                     <tr>
-                        <th scope="row">{{ obj.id }}</th>
-                        <td>{{ obj.nombre }}</td>
-                        <td>{{ obj.fecha|date:"M d, Y" }}</td>
-                        <td><a href="">Ver detalle</a></td>
+                        <th scope="row">{{ obj.citacion.id }}</th>
+                        <td>{{ obj.citacion.nombre }}</td>
+                        <td>{{ obj.citacion.fecha|date:"M d, Y" }}</td>
+                        <td>{{ obj.cantidad_licencias }}</td>
+                        <td><a href="{% url 'licencia_citacion' id_citacion=obj.citacion.id %}">Ver detalle</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

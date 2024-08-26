@@ -50,7 +50,8 @@ def citaciones_post(request):
                 msg = EmailMultiAlternatives(
                     subject = "Nueva citación",
                     body = plain_message,
-                    from_email = "contacto@bombalandeta.cl",
+                    # from_email = "contacto@bombalandeta.cl",
+                    from_email = "contact@terceraquillota.co.site",
                     to = [e,],
                     reply_to=["licencias.terceraquillota@gmail.com"],
                 )

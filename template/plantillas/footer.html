@@ -34,14 +34,25 @@
 
 {% if messages %}
     {% for m in messages %}
-        <script>
-            Swal.fire({
-                title: '!!!',
-                text: '{{ m }}',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-            })
-        </script>
+        {% if 'error' == m.tags %}
+            <script>
+                Swal.fire({
+                    title: 'Error',
+                    text: '{{ m }}',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                })
+            </script>
+        {% else %}
+            <script>
+                Swal.fire({
+                    title: '!!!',
+                    text: '{{ m }}',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+            </script>
+        {% endif %}
     {% endfor %}
 {% endif %}
 
