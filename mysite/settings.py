@@ -18,7 +18,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['167.114.98.159','localhost', '127.0.0.1', 'terceraquillota.cl', 'www.terceraquillota.cl']
 
 # EMAIL_HOST = 'mail.bombalandeta.cl'
 # EMAIL_HOST_USER = 'contacto@bombalandeta.cl'
@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'tercera_cia',
         'USER': os.environ.get('BD_USER'),
-        'PASSWORD': os.environ.get('BD_PASSWORD'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
         # 'USER': 'db_tercera',
         # 'PASSWORD': 'KZWLyQWLYxsaTSV',
         'HOST':'localhost',

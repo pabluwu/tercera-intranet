@@ -2,11 +2,12 @@ from django.http import FileResponse
 from intranet.models import Cuota
 from intranet.forms import CuotaForm
 from django.shortcuts import get_object_or_404, render
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 
 
 @login_required
+@permission_required('intranet.add_cuota')
 def post_cuota(request):
     context = { 'form' : CuotaForm() }
     

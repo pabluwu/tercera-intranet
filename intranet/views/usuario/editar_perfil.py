@@ -10,8 +10,13 @@ from intranet.forms import UsuarioForm, UsuarioProfileForm
 def editar_perfil(request):
     
     usuario = request.user
-    
-    usuario_profile_form = UsuarioProfileForm(instance=usuario.bombero)
+    if not hasattr(usuario, 'bombero'):
+        bombero = UserProfile.objects.create(
+            user=usuario
+        )
+        usuario_profile_form = UsuarioProfileForm(instance=bombero)
+    else:
+        usuario_profile_form = UsuarioProfileForm(instance=usuario.bombero)
     usuario_form = UsuarioForm(instance=usuario)
     
     if request.method == 'POST':
