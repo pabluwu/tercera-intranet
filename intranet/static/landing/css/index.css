@@ -80,6 +80,18 @@ body{
 .truck_photo img{
     height: 100%;
 }
+.m31 img{
+    transform: translateX(-700px);
+}
+.m32 img{
+    transform: translateX(-700px);
+}
+.m33 img{
+    transform: translateX(-300px);
+}
+.m34 img{
+    transform: translateX(-600px);
+}
 .bg_black{
     background-color: #0f0f0f;
 }
